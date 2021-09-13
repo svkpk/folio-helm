@@ -26,7 +26,7 @@ jobs:
           version: v3.4.0
           
       - name: Helm Lint
-        run: helm lint $(ls -1 | grep -v -e terraform -e charts)
+        run: helm lint $(ls -1 | grep -v -e terraform -e charts -e package_all.sh)
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.2.1
