@@ -37,4 +37,4 @@ jobs:
       - name: Helm Repo Index
         run: | 
           helm repo index charts --url https://$(echo $GITHUB_REPOSITORY | cut -d/ -f1).github.io/$(echo $GITHUB_REPOSITORY | cut -d/ -f2)/charts
-          cat index.yaml
+          cat charts/index.yaml
