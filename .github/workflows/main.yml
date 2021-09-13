@@ -26,9 +26,10 @@ jobs:
           version: v3.4.0
           
       - name: Helm Lint
-        run: helm lint $(ls -1 | grep -v -e terraform -e charts -e package_all.sh)
+        run: helm lint $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker)
 
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.2.1
-        env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Helm Package
+        run: |
+          for chart in $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker); do
+            helm package -d charts $chart
+          done
