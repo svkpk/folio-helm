@@ -22,9 +22,10 @@ for chart in $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docke
   helm package -d "$build_dir" $chart
 done
 
-helm repo index "$build_dir" --url https://$(echo $GITHUB_REPOSITORY | cut -d/ -f1).github.io/$(echo $GITHUB_REPOSITORY | cut -d/ -f2)/charts
+helm repo index . --url https://$(echo $GITHUB_REPOSITORY | cut -d/ -f1).github.io/$(echo $GITHUB_REPOSITORY | cut -d/ -f2)/charts
 
 git add "$build_dir"
+git add index.yaml
 
 git commit -m "updated GitHub Pages"
 if [ $? -ne 0 ]; then
