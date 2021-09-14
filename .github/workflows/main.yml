@@ -24,11 +24,11 @@ jobs:
           version: v3.4.0
           
       - name: Helm Lint
-        run: helm lint $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker -e index.yaml -e README.md -e release.sh)
+        run: helm lint $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker -e index.yaml -e README.md -e release.sh -e index.html)
 
       - name: Helm Package
         run: |
-          for chart in $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker -e index.yaml -e README.md -e release.sh); do
+          for chart in $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker -e index.yaml -e README.md -e release.sh -e index.html); do
             helm package -d charts $chart
           done
 
