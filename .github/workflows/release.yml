@@ -22,4 +22,6 @@ jobs:
         run: helm lint $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker -e index.yaml -e README.md -e release.sh)
 
       - name: Release Helm Repo on Pages
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: ./release.sh
