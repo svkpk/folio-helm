@@ -1,7 +1,5 @@
 name: CI
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
   workflow_dispatch:
@@ -26,11 +24,11 @@ jobs:
           version: v3.4.0
           
       - name: Helm Lint
-        run: helm lint $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker -e index.yaml -e README.md)
+        run: helm lint $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker -e index.yaml -e README.md -e release.sh)
 
       - name: Helm Package
         run: |
-          for chart in $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker -e index.yaml -e README.md); do
+          for chart in $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker -e index.yaml -e README.md -e release.sh); do
             helm package -d charts $chart
           done
 
