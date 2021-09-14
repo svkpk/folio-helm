@@ -18,7 +18,7 @@ git rebase "${remote_name}/${main_branch}"
 
 git add "$build_dir"
 
-for chart in $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker -e index.yaml -e README.md -e release.sh); do
+for chart in $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docker -e index.yaml -e README.md -e release.sh -e index.html); do
   helm package -d "$build_dir" $chart
 done
 
