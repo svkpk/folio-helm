@@ -24,7 +24,7 @@ done
 
 helm repo index . --url https://$(echo $GITHUB_REPOSITORY | cut -d/ -f1).github.io/$(echo $GITHUB_REPOSITORY | cut -d/ -f2)
 
-cat << EOF >> index.html
+cat << EOF > index.html
 <h1>Folio Helm Repository</h1>
 
 <h2>Usage</h2>
@@ -32,9 +32,9 @@ cat << EOF >> index.html
 <p>Example: install okapi</p>
 
 <ol>
-  <li>1. pirepare values file</li>
-  <li>2. prepare secrets</li>
-  <li>3. install via helm into folio namespace</li>
+  <li>pirepare values file</li>
+  <li>prepare secrets</li>
+  <li>install via helm into folio namespace</li>
 </ol>
 
 <pre>
