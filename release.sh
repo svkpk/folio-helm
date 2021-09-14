@@ -23,9 +23,29 @@ for chart in $(ls -1 | grep -v -e terraform -e charts -e package_all.sh -e docke
 done
 
 helm repo index . --url https://$(echo $GITHUB_REPOSITORY | cut -d/ -f1).github.io/$(echo $GITHUB_REPOSITORY | cut -d/ -f2)/charts
+cat << EOF >> index.html
+# Folio Helm Repository
+
+## Usage
+
+Example: install okapi
+
+1. prepare values file
+2. prepare secrets
+3. install via helm into folio namespace
+
+```bash
+helm repo add folio https://$(echo $GITHUB_REPOSITORY | cut -d/ -f1).github.io/$(echo $GITHUB_REPOSITORY | cut -d/ -f2)
+helm upgrade --install --wait --atomic --timeout 10m \
+  --create-namespace \
+  --values helm/okapi-values.yaml \
+  --namespace=folio okapi folio/okapi
+```
+EOF
 
 git add "$build_dir"
 git add index.yaml
+git add index.html
 
 git commit -m "updated GitHub Pages"
 if [ $? -ne 0 ]; then
