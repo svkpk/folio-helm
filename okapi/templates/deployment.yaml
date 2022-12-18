@@ -39,22 +39,22 @@ spec:
             - name: OKAPI_HOST
               valueFrom:
                 secretKeyRef:
-                  name: db-connect-modules
+                  name: db-connect-okapi
                   key: DB_HOST
             - name: OKAPI_DB
               valueFrom:
                 secretKeyRef:
-                  name: db-connect-modules
-                  key: DB_DATABASE
+                  name: db-connect-okapi
+                  key: DB_DATABAS/
             - name: OKAPI_DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: db-connect-modules
+                  name: db-connect-okapi
                   key: DB_USERNAME
             - name: OKAPI_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-connect-modules
+                  name: db-connect-okapi
                   key: DB_PASSWORD
             - name: JAVA_OPTIONS
               value: {{ .Values.javaOptions | quote }}
