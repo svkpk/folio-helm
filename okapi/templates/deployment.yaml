@@ -45,7 +45,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: db-connect-okapi
-                  key: DB_DATABAS/
+                  key: DB_DATABASE
             - name: OKAPI_DB_USER
               valueFrom:
                 secretKeyRef:
